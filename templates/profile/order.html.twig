@@ -1,0 +1,21 @@
+{% for orderDetail in order.orderDetails %}
+		<div class="card m-0 p-0 d-flex flex-sm-row rounded-0">
+			<a href='{{ path('app_product_show_one', { 'catSlug': orderDetail.products.category.slug, 'prodSlug': orderDetail.products.slug }) }}' class="text-decoration-none small">
+				<img src="{{ asset('images/products/' ~ orderDetail.products.image) }}" class="img-fluid rounded cart_img rounded-0" alt={{ orderDetail.products.image }}/>
+			</a>
+			<div class="card-body">
+				<h5 class="card-title text-center fw-bold">{{ orderDetail.products.title }}</h5>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td class="fw-bold">Quantité:</td>
+							<td class="fw-bold">{{ orderDetail.qnty }}</td>
+							<td class="fw-bold">|</td>
+							<td class="fw-bold">Prix, €:</td>
+							<td class="fw-bold">{{orderDetail.qnty * orderDetail.products.price}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+{% endfor %}

@@ -1,0 +1,27 @@
+<section id="search_section" class="sticky-top">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 d-flex gap-2 navbar-expand-sm  justify-content-end">
+				<div class="collapse  navbar-collapse w-100" id="searchGroup">
+					<form method="get" action="{{ path('app_search') }}" class="d-flex flex-fill align-self-center flex-column flex-sm-row" id="form">
+						<select name='queryType' class="form-select order-2 order-sm-1 input_type" aria-label="Default select example">
+							<option value="title">Titre</option>
+							<option value="commonName">Nom Commun</option>
+							<option value="genre">Genre</option>
+						</select>
+						<input name='queryValue' class="form-control order-1 order-sm-2 me-1 input_search" type="search" placeholder="Je cherche une plante..." aria-label="Search" required minlength="4"/>
+						<button class="btn btn-additional order-3 align-self-center search_button" for="search" type="submit">
+							<i class="fa fa-search fa-lg align-self-center" aria-hidden="true"></i>
+						</button>
+					</form>
+				</div>
+
+				<div class="florei_brun_separator h-75 align-self-center"></div>
+				<a href="#footer" class=" btn btn-additional switch_button d-flex justify-content-center align-self-center">
+					<i class="fa fa-angle-double-down fa-lg align-self-center" aria-hidden="true"></i>
+				</a>
+				<button type="button" class="btn btn-additional  align-self-center collapse_button d-sm-none dropdown-toggle triangle-sup" data-bs-toggle="collapse" data-bs-target="#searchGroup" aria-expanded="true" aria-controls="searchGroup"></button>
+			</div>
+		</div>
+	</div>
+</section>

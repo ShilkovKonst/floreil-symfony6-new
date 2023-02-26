@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in
+{% endblock %}
+
+{# ... #}
+
+{% block body %}
+
+	{% if error %}
+		<div class="alert alert-danger rounded-0 mb-0">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+	<section id="login_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="fw-bold text-center">Sign in
+					</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 ">
+					<div id="login">
+						<form action="{{ path('app_login') }}" method="post">
+							<label for="username" class="col-form-label">Email:</label>
+							<input type="text" class="form-control rounded-pill" id="username" name="_username" value="{{ last_username }}">
+
+							<label for="password" class="col-form-label">Mot de passe:</label>
+							<input type="password" class="form-control rounded-pill" id="password" name="_password">
+							<div>Mot de passe oublié?
+								<a href="{{ path('app_request_reset_pass') }}" class="btn btn-link ps-0">Cliquez ici!</a>
+							</div>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<input type="hidden" name="_target_path" value="{{ path('app_main') }}">
+							<button type="submit" class="btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 bodybtn_text_shadow">Sign in!</button>
+						</form>
+						<div>Besoin d'un compte?
+							<a href="{{ path('app_register') }}" class="btn btn-link ps-0">Sign up!</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

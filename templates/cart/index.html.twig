@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	{% set totalPrice = 0 %}
+	<section id="cart">
+		<div class="container-fluid">
+			<div class="row justify-content-evenly">
+				{% if userCartProducts|length == 0 %}
+					<div class="h1 fw-bold text-center my-auto mx-auto py-5">Votre panier est vide</div>
+				{% else %}
+					<div class="col-12 col-md-8">
+						{% for i in 0..chosenProducts|length - 1 %}
+							{% set order = userCartProducts[i] %}
+							{% set product = chosenProducts[i] %}
+							{% set totalPrice = totalPrice + order.qnty * product.price %}
+							<div class="card card_shadow my-3 p-0 d-flex flex-sm-row">
+								<a href='{{ path('app_product_show_one', { 'catSlug': product.category.slug, 'prodSlug': product.slug }) }}' class="text-decoration-none">
+									<img src="{{ asset('images/products/' ~ product.image) }}" class="img-fluid rounded cart_img" alt={{ product.image }}/>
+								</a>
+								<div class="card-body">
+									<h5 class="card-title text-center fw-bold">{{ product.title }}</h5>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td class="fw-bold">En stock:</td>
+												<td class="fw-bold">{{ product.inStockQnty }}</td>
+												<td class="fw-bold">|</td>
+												<td class="fw-bold">Prix unitaire, €:</td>
+												<td class="fw-bold">{{ product.price }}</td>
+											</tr>
+											<tr>
+												<td class="fw-bold">En commande:</td>
+												<td class="fw-bold">{{ order.qnty }}</td>
+												<td class="fw-bold">|</td>
+												<td class="fw-bold">Total prix, €:</td>
+												<td class="fw-bold">{{order.qnty * product.price}}</td>
+											</tr>
+										</tbody>
+									</table>
+									<form action="{{ path('app_cart_chage_qnty', { 'id': product.id }) }}" method="POST">
+										{{ include ('_partials/_addToCart_form.html.twig', { button_title: 'Confirmer' } ) }}
+									</form>
+									<a href='{{ path('app_cart_delete_one', { 'id': product.id }) }}' type="submit" class="btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 btn_text_shadow">Supprimer</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="col-12 col-md-3 h5 fw-bold text-center">
+						<p class="">Sous-total, €:
+							{{ totalPrice }}</p>
+						<p>({{ userCartProducts|length }}
+							article(s))</p>
+							<form action="{{ path('app_checkout', { 'amount': totalPrice }) }}" method="POST">
+								<script
+									src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+									data-key="{{ stripe_public_key }}"
+									data-amount="{{ totalPrice * 100 }}"
+									data-name="Floreil"
+									data-description="Widget"
+									data-image="/images/logos/Logo_noname.png"
+									data-locale="auto">
+								</script>
+							</form>
+						{# <a href='{{ path('app_checkout', { 'amount': totalPrice }) }}' type="submit" class="btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 bodybtn_text_shadow">Passer la commande</a> #}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

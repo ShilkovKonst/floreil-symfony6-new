@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{product.title}}
+{% endblock %}
+{% block breadcrumb %}
+	<section id='breadcrumbs'>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_main') }}">Acceuil</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_product', { 'catSlug': product.category.slug }) }}">{{ product.category.name }}</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block body %}
+	<section id="commerciale">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="card mb-3">
+						<div class="row">
+							<h3 class="card-title text-center fw-bold">{{ product.title }}</h3>
+						</div>
+						<div class="row g-0">
+							<div class="col-md-6">
+								<img src='{{ asset('/images/products/' ~ product.image) }}' class="img-fluid rounded p-3" alt={{product.image}}/>
+								<div class="px-3 py-3">
+									<ul class="list-group list-group-vertical bg_color_2 border-opacity-10 h-100">
+										<li class="list-group-item bg-transparent border-opacity-10 d-flex flex-column flex-sm-row">
+											<p class="fw-bold">Prix, €:
+												{{product.price}}</p>
+											{% if product.inStockQnty > 0 %}
+												<p class="fw-bold ms-sm-3">En stock:
+													{{ product.inStockQnty }}</p>
+											{% else %}
+												<p class="fw-bold ms-sm-3">Rupture de stock</p>
+											{% endif %}
+										</li>
+										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+											<li class="list-group-item bg-transparent p-3">
+												<form action="{{ path('app_product_addToCart', { 'catSlug': product.category.slug, 'prodSlug': product.slug }) }}" method="POST">
+													{{ include ('_partials/_addToCart_form.html.twig', { button_title: 'Ajouter au panier' } ) }}
+												</form>
+											</li>
+										{% endif %}
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card-body">
+									<ul class="list-group bg_color_2">
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold"></span>
+											{{product.description}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Nom commun:
+											</span>
+											{{product.commonName}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Genre:
+											</span>
+											{{product.genre}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Hauteur à maturité (cm):
+											</span>
+											{{product.size}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Feuillage:
+											</span>
+											{{product.foliage}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Arrosage:
+											</span>
+											{{product.watering}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Floraison:
+											</span>
+											{{product.bloom}}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Floraison parfumée:
+											</span>
+											{% if product.isFragrantBloom %}
+												Oui
+											{% else %}
+												Non
+											{% endif %}
+										</li>
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Resistance au froid (°С):
+											</span>
+											{% if product.isResistedToCold %}
+												{{product.soldResistance}}
+											{% else %}
+												Non
+											{% endif %}
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

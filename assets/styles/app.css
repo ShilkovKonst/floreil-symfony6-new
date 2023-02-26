@@ -1,0 +1,760 @@
+/* @import "../../node_modules/materialize-css/dist/css/materialize.min.css"; */
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+/* @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css"; */
+
+@import "/assets/styles/range-materialize.css";
+@import "/assets/styles/hamburger.css";
+
+
+:root {
+  --main_color_1: rgb(0, 128, 0);
+  --main_color_2: rgb(204, 154, 41);
+  --main_bg_color_1: rgba(0, 128, 0, 0.33);
+  --main_bg_color_11: rgba(0, 128, 0, 0.5);
+  --main_bg_color_111: rgba(0, 128, 0, 0.66);
+  --main_bg_color_1111: rgba(0, 128, 0, 0.99);
+  --main_bg_color_2: rgba(204, 154, 41, 0.33);
+  --main_bg_color_22: rgba(204, 154, 41, 0.5);
+  --main_bg_color_222: rgba(204, 154, 41, 0.66);
+  --main_bg_color_2222: rgba(204, 154, 41, 0.99);
+  --floreil-font-family: Georgia, 'Times New Roman', Times, serif;
+  --bs-border-color: black;
+}
+
+body {
+  font-family: var(--floreil-font-family);
+  min-width: 280px;
+}
+
+#error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to right, var(--main_bg_color_222) 0%, var(--main_bg_color_111) 50%, var(--main_bg_color_222) 100%);
+  min-height: 550px;
+}
+ 
+
+@media screen and (min-width: 576px) {
+  #footer_dropdown_header {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #footer_dropdown_header {
+    font-size: 90%;
+  }
+
+  table {
+    font-size: 66%;
+  }
+}
+
+section {
+  padding: 25px 0;
+}
+
+p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/*setting backgrounds for Site's sections*/
+header {
+  background: linear-gradient(to bottom, var(--main_bg_color_2) 0%, var(--main_bg_color_22) 100%), url(../images/site/scott-webb-pots-in-a-row-org-top.jpg);
+  background-size: auto 100%;
+}
+
+.login-footer {
+  padding-top: 24px;
+  padding-bottom: 8px;
+  background:
+    /* linear-gradient(to bottom, var(--main_bg_color_222) 0%, #00000050 100%),  */
+    url(../images/site/scott-webb-pots-in-a-row-gvr.jpg);
+  background-size: auto 100%;
+}
+
+.login-header {
+  padding-top: 8px;
+  padding-bottom: 24px;
+  background:
+    /* linear-gradient(to bottom, var(--main_bg_color_222) 0%, #00000050 100%),  */
+    url(../images/site/scott-webb-pots-in-a-row-org-top-down.jpg);
+  background-size: auto 100%;
+}
+
+#search_section,
+#prefooter_section,
+.intersection {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-bottom: solid 2px var(--main_color_1);
+  border-top: solid 2px var(--main_color_1);
+  z-index: 1000;
+  background: linear-gradient(to right, var(--main_bg_color_11) 0%, var(--main_bg_color_22) 50%, var(--main_bg_color_11) 100%), url(../images/site/scott-webb-light-grass-mono.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#footer,
+#breadcrumbs,
+#cart {
+  background: linear-gradient(to right, var(--main_bg_color_222) 0%, var(--main_bg_color_111) 50%, var(--main_bg_color_222) 100%);
+}
+
+#profile_dropdown {
+  background: linear-gradient(to right, var(--main_bg_color_22) 0%, var(--main_bg_color_11) 50%, var(--main_bg_color_22) 100%), url(../images/site/scott-webb-light-grass-mono.jpg);
+}
+
+#profile_dropdown {
+  border-top-right-radius: 22px;
+  border-top-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  border-bottom-left-radius: 22px;
+}
+
+#breadcrumbs {
+  padding: 0;
+}
+
+.breadcrumb {
+  margin: 0;
+}
+
+.breadcrumb button {
+  margin: 0;
+  padding: 0;
+}
+
+#video_section,
+#ads_carousel {
+  background: linear-gradient(to bottom, var(--main_bg_color_22) 50%, var(--main_bg_color_11) 100%);
+}
+
+.login-body {
+  background: linear-gradient(to bottom, var(--main_bg_color_22) 0%, var(--main_bg_color_11) 50%, var(--main_bg_color_22) 100%);
+}
+
+#reset_password_section,
+#signup_section,
+#login_section,
+#profile_section {
+  background: linear-gradient(to bottom, var(--main_bg_color_1) 0%, var(--main_bg_color_2) 100%);
+}
+
+#commerciale {
+  background: linear-gradient(to bottom, var(--main_bg_color_11) 0%, var(--main_bg_color_22) 50%);
+}
+
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*technical and decoration classes (content separators etc)*/
+.login-title {
+  text-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+
+#logo {
+  background: radial-gradient(ellipse at center, #ffffff75 0%, #cc9a2900 85%);
+}
+
+.carousel-caption {
+  background: radial-gradient(ellipse at center, #000000 0%, #00000000 75%);
+}
+
+#header a,
+#search_section a,
+#prefooter_section a {
+  text-decoration: none;
+}
+
+.card {
+  background-color: transparent;
+  border: transparent;
+}
+
+.card_shadow {
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 1);
+}
+
+.card-title-height {
+  height: 75px;
+}
+
+.card-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.florei_vert_separator {
+  background-color: var(--main_color_1);
+  box-shadow: 1px 1px 2px black;
+  width: 5px;
+}
+
+#cart {
+  min-height: 750px;
+}
+
+#cart_final {
+  min-width: 280px;
+  width: 100%;
+  border-top: solid 2px var(--main_color_1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, var(--main_bg_color_111) 0%, var(--main_bg_color_222) 50%, var(--main_bg_color_111) 100%), url(../images/site/scott-webb-light-grass-mono.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 1001;
+
+}
+
+.cart_img {
+  max-height: 270px;
+}
+
+@media screen and (max-width: 576px) {
+  .cart_img {
+    max-height: none;
+  }
+}
+
+.florei_brun_separator {
+  background-color: var(--main_color_2);
+  border: solid thin var(--main_color_1);
+  box-shadow: 0px 0px 2px 0px black;
+  min-width: 5px;
+  width: 5px;
+}
+
+.separator_adjustible {
+  width: 100%;
+}
+
+.grad-to-left {
+  background: linear-gradient(to right, var(--main_color_2) 0%, var(--main_color_1) 100%);
+}
+
+.grad-to-right {
+  background: linear-gradient(to right, var(--main_color_1) 0%, var(--main_color_2) 100%);
+}
+
+.intersection {
+  height: 20px;
+}
+
+.carousel {
+  max-height: 500px;
+}
+
+#search {
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 1);
+}
+
+.text-shadow::before {
+  text-shadow: 0px 0px 2px 0px black;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+/*classes for rotation, scripts and hovering the cards*/
+.rotatable_y_0_to_180 {
+  transform: rotateY(0deg);
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.rotatable_y_180_to_0 {
+  transform: rotateY(180deg);
+  color: black;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.rot_y_180_toggler:hover .rotatable_y_0_to_180 {
+  transform: rotateY(180deg);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.rot_y_180_toggler:hover .rotatable_y_180_to_0 {
+  transform: rotateY(0deg);
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.rot_y_180_toggler:hover .card_text_link {
+  height: auto;
+  opacity: 1;
+  transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+
+.rotatable_z_0 {
+  transform: rotateZ(0deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.rotatable_z_90 {
+  transform: rotateZ(90deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.rotatable_z_180 {
+  transform: rotateZ(180deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.card_text_link:hover .fa-arrow-right {
+  position: relative;
+  animation: mymoveright 0.5s infinite;
+}
+
+@keyframes mymoveright {
+  0% {
+    right: 0px;
+  }
+
+  50% {
+    right: 5px
+  }
+
+  100% {
+    right: 0px;
+  }
+}
+
+.card_text_link:hover .fa-arrow-left {
+  position: relative;
+  animation: mymoveleft 0.5s infinite;
+}
+
+@keyframes mymoveleft {
+  00% {
+    left: 0px;
+  }
+
+  50% {
+    left: 5px
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*video parameters*/
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/*sizes and colors*/
+.color_1 {
+  color: var(--main_color_1);
+}
+
+.color_2 {
+  color: var(--main_color_1);
+}
+
+.bg_color_1 {
+  background-color: var(--main_bg_color_1);
+}
+
+.bg_color_2 {
+  background-color: var(--main_bg_color_2);
+}
+
+.bg_color_12 {
+  background: linear-gradient(to bottom, var(--main_bg_color_1) 0%, var(--main_bg_color_2) 100%);
+}
+
+.bg_color_21 {
+  background: linear-gradient(to bottom, var(--main_bg_color_2) 50%, var(--main_bg_color_1) 100%);
+}
+
+.bg_color_11 {
+  background-color: var(--main_bg_color_11);
+  transition: all 0.1s;
+}
+
+.card_text_link:hover .bg_color_22 {
+  background-color: var(--main_bg_color_2);
+  transition: all 0.1s;
+}
+
+.bg_color_111 {
+  background-color: var(--main_color_1);
+}
+
+.bg_color_22 {
+  background-color: var(--main_bg_color_22);
+}
+
+.bg_color_1122 {
+  background: linear-gradient(to bottom, var(--main_bg_color_11) 0%, var(--main_bg_color_22) 100%);
+}
+
+.bg_color_2211 {
+  background: linear-gradient(to bottom, var(--main_bg_color_22) 0%, var(--main_bg_color_11) 100%);
+}
+
+.huge {
+  height: 52px;
+  width: 52px;
+}
+
+@media screen and (min-width: 992px) {
+
+  .icon_resize,
+  .icon_resize_qnt {
+    height: 44px;
+    width: 44px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+
+  .icon_resize,
+  .icon_resize_qnt {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .icon_resize {
+    height: 28px;
+    width: 28px;
+  }
+
+  .icon_resize_qnt {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+.bi_big {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+/* @media screen and (max-width: 576px) {
+  .bi_big {
+    font-weight: bold;
+    font-size: x-large;
+  }
+} */
+
+.bi-dash-circle,
+.bi-plus-circle {
+  height: 16px;
+  width: 16px;
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+
+/*bootstrap's boutons classes modified*/
+.btn {
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 1);
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 1);
+}
+
+.btn:hover .text-shadow {
+  text-shadow: 0px 0px 3px 0px black;
+}
+
+.btn-body {
+  --bs-btn-color: var(--main_color_1);
+  --bs-btn-bg: var(--main_bg_color_222);
+  --bs-btn-border-color: var(--main_bg_color_22);
+  --bs-btn-hover-color: var(--main_color_1);
+  --bs-btn-hover-bg: var(--main_bg_color_2222);
+  --bs-btn-hover-border-color: var(--main_bg_color_222);
+  --bs-btn-active-color: var(--main_color_2);
+  --bs-btn-active-bg: var(--main_bg_color_1111);
+  --bs-btn-active-border-color: var(--main_color_1);
+}
+
+.btn-header {
+  --bs-btn-color: var(--main_color_2);
+  --bs-btn-bg: var(--main_bg_color_111);
+  --bs-btn-border-color: var(--main_bg_color_11);
+  --bs-btn-hover-color: var(--main_color_2);
+  --bs-btn-hover-bg: var(--main_bg_color_1111);
+  --bs-btn-hover-border-color: var(--main_bg_color_111);
+  --bs-btn-active-color: var(--main_color_1);
+  --bs-btn-active-bg: var(--main_bg_color_2222);
+  --bs-btn-active-border-color: var(--main_color_2);
+}
+
+.btn-additional {
+  --bs-btn-color: var(--main_color_1);
+  --bs-btn-bg: var(--main_bg_color_222);
+  --bs-btn-border-color: var(--main_bg_color_222);
+  --bs-btn-hover-color: var(--main_color_1);
+  --bs-btn-hover-bg: var(--main_bg_color_222);
+  --bs-btn-hover-border-color: var(--main_bg_color_222);
+  --bs-btn-active-color: var(--main_color_2);
+  --bs-btn-active-bg: var(--main_bg_color_111);
+  --bs-btn-active-border-color: var(--main_bg_color_2);
+}
+
+.btn-social-media {
+  --bs-btn-color: var(--main_color_1);
+  --bs-btn-bg: var(--main_color_2);
+  --bs-btn-border-color: var(--main_color_2);
+  --bs-btn-hover-color: var(--main_color_1);
+  --bs-btn-hover-bg: var(--main_bg_color_222);
+  --bs-btn-hover-border-color: var(--main_bg_color_222);
+  --bs-btn-active-color: var(--main_color_2);
+  --bs-btn-active-bg: var(--main_color_1);
+  --bs-btn-active-border-color: var(--main_color_1);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 1);
+}
+
+#collapse_toggler_header {
+  color: var(--main_color_2);
+  background-color: var(--main_color_1);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: underline;
+}
+
+.btn-link {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.btn-link:focus-visible {
+  box-shadow: none;
+}
+
+.btn-link:hover {
+  box-shadow: none;
+}
+
+.carousel-item {
+  max-height: 500px;
+}
+
+.dropdown-content {
+  position: absolute;
+  /* background-color: #f9f9f9;
+  margin-top: 10px;
+  margin-left: 10px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  z-index: 1001;
+}
+
+.dropdown-menu {
+  z-index: 1001;
+  position: absolute;
+}
+
+.dropdown-toggle::after {
+  display: flex;
+  align-self: center;
+}
+
+.avatar_palceholder {
+  height: 10rem;
+  width: 10rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  /* color: var(--bs-dropdown-link-hover-color); */
+  background: linear-gradient(to right, var(--main_bg_color_222) 0%, var(--main_bg_color_111) 50%, var(--main_bg_color_222) 100%);
+}
+
+.btn-header:active .navbar_text_shadow {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.dropdown .show .navbar_text_shadow {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.navbar_text_shadow {
+  text-shadow: 1px 1px 2px black;
+}
+
+.bodybtn_text_shadow:active {
+  text-shadow: 1px 1px 2px black;
+}
+
+.bodybtn_text_shadow {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.triangle::after {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--main_color_2);
+  /* You can change the color here */
+}
+
+.triangle:active::after {
+  border-top: 10px solid var(--main_color_1);
+  /* You can change the color here */
+}
+
+.show.triangle::after {
+  border-top: 10px solid var(--main_color_1);
+  /* You can change the color here */
+}
+
+#product_header:hover {
+  background-color: var(--main_bg_color_222);
+}
+
+.small {
+  height: 120px;
+  width: 120px;
+}
+
+.tiny {
+  height: 32px;
+  width: 32px;
+}
+
+.collapse_button {
+  width: 44px;
+  height: 44px;  
+  border-top-right-radius: 22px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 22px;
+  border-bottom-left-radius: 0;
+  border-left: none;
+}
+
+@media screen and (max-width: 576px) {
+  .switch_button {
+    width: 44px;
+    height: 44px;  
+    border-top-right-radius: 0;
+    border-top-left-radius: 22px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 22px;
+  }
+  .search_button {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;    
+    border-top-right-radius: 17px;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border-bottom-left-radius: 17px;
+  }
+  .input_search{
+    width: 100%;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .input_type{
+    width: 100%;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+@media screen and (min-width: 577px) {
+  .switch_button {
+    width: 44px;
+    height: 44px;  
+    border-radius: 100%;
+  }
+  .search_button {
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+  }
+  .input_search{
+    width: 100%;
+    border-top-right-radius: 22px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 22px;
+    border-bottom-left-radius: 0;
+  }
+  .input_type{
+    width: 15%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 22px;
+  }
+}
+
+.triangle-sup::after {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--main_color_1);
+  /* You can change the color here */
+}
+
+.triangle-sup:active::after {
+  border-top: 10px solid var(--main_color_2);
+  /* You can change the color here */
+}
+
+.show.triangle-sup::after {
+  border-top: 10px solid var(--main_color_2);
+  /* You can change the color here */
+}
+
+.accordion {
+  --bs-accordion-color: var(--main_color_1);
+  --bs-accordion-bg: var(--main_bg_color_2);
+  --bs-accordion-border-color: var(--main_color_1);
+  --bs-accordion-border-width: var(--bs-border-width);
+  --bs-accordion-border-radius: var(--bs-border-radius);
+  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: var(--main_color_1);
+  --bs-accordion-btn-bg: var(--main_bg_color_2);
+  --bs-accordion-btn-focus-border-color: var(--main_bg_color_1111);
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-active-color: var(--main_color_1);
+  --bs-accordion-active-bg: var(--main_bg_color_2);
+}

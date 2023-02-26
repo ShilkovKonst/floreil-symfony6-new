@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="card">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-lg-4">
+				{% if user.avatarImage is same as('') or user.avatarImage is same as(null) %}
+					<div class="d-flex justify-content-center align-self-center border border-success rounded-circle avatar_palceholder bg-light">
+						<i class="fa-solid fa-user fa-7x text-secondary align-self-center"></i>
+					</div>
+				{% else %}
+					<img src="{{ asset('images/profiles/' ~ user.avatarImage) }}" alt="{{ user.avatarImage }}" class="img-fluid border border-success rounded-circle">
+				{% endif %}
+			</div>
+			<div class="col-12 col-sm-6 col-lg-8">
+				<h3>
+					Bienvenu(e),
+					{{ user.name }}!</h3>
+				<h4>
+					Vos coordonnées</h4>
+				<p>Nom et Prènom:
+					<span class="fw-bold">{{ user.name }}
+						{{ user.surname }}</span>
+				</p>
+				<p>Email:
+					<span class="fw-bold">{{ user.email }}</span>
+				</p>
+				<p>Téléphone mobile:
+					<span class="fw-bold">{{ user.mobTel }}</span>
+				</p>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<h4>
+				Votre adresse</h4>
+		</div>
+		<div class="row">
+			<p>Code postale:
+				<span class="fw-bold">{{ user.codeZIP }}</span>
+			</p>
+			<p>Ville:
+				<span class="fw-bold">{{ user.city }}</span>
+			</p>
+			<p>Rue:
+				<span class="fw-bold">{{ user.street }}</span>
+			</p>
+			<p>Bat. №:
+				<span class="fw-bold">{{ user.buildNum }}</span>
+			</p>
+			{% if user.additionalInfo is not same as(null) %}
+				<p>Informations Complémentaires:
+					<span class="fw-bold">{{ user.additionalInfo }}</span>
+				</p>
+			{% endif %}
+			<hr class="mb-1">
+			<div class="mb-3">
+				Vous voulez changer quelque chose?
+				<a href="{{ path('app_profile_settings') }}" class="">Cliquez ici!</a>
+			</div>
+			<hr class="mb-1">
+			<hr class="mt-1">
+		</div>
+	</div>
+</div>

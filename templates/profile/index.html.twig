@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil
+	{{ user.email }}
+{% endblock %}
+{% block breadcrumb %}
+	<section id='breadcrumbs'>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_main') }}">Accueil</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">
+								Profil
+							</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block body %}
+	<section id="profile_section">
+		<div class="container">
+			{{ include ('profile/user_info.html.twig') }}
+			{{ include ('profile/orders.html.twig') }}
+		</div>
+	</section>
+{% endblock %}

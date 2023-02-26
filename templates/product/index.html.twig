@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% if category %}
+		{{ category.name }}
+	{% endif %}
+	Résultats de recherche
+{% endblock %}
+{% block breadcrumb %}
+	<section id='breadcrumbs'>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_main') }}">Acceuil</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">
+								{{ category is not same as(null) ? category.name : 'Résultats de recherche' }}
+							</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block body %}
+	<section id="commerciale">
+		<div class="container">
+			<div class="row">
+				{% for product in products %}
+					<div class="col-12 col-md-6 col-lg-4 my-3">
+						<a href='{{ path('app_product_show_one', { 'catSlug': product.category.slug, 'prodSlug': product.slug}) }}' class="text-decoration-none">
+							<ul class="list-group list-group-horizontal card_shadow rounded-0 rounded-top">
+								<li class="list-group-item w-100 bg_color_22" id="product_header">
+									<h5 class="card-title card-title-height text-center py-3">{{ product.title }}</h5>
+								</li>
+							</ul>
+						</a>
+						<div class="card rot_y_180_toggler">
+							<img src='{{ asset('images/products/' ~ product.image) }}' class="card-img rotatable_y_0_to_180 card_shadow rounded-0" alt={{ product.image }}/>
+							<div class="card-img-overlay card_shadow rotatable_y_180_to_0 justify-content-center overflow-auto rounded-0 p-1 bg_color_21">
+								<ul class="list-group list-group-flush bg-transparent">
+									<li class="list-group-item bg-transparent">
+										<span class="fw-bold">Nom commun:
+										</span>
+										{{ product.commonName }}
+									</li>
+									{% if product.isResistedToCold %}
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Resistance au froid (°С):
+											</span>
+											{{ product.coldResistance }}
+										</li>
+									{% else %}
+										<li class="list-group-item bg-transparent">
+											<span class="fw-bold">Resistance au froid:
+											</span>
+											non
+										</li>
+									{% endif %}
+									<li class="list-group-item bg-transparent">
+										<span class="fw-bold">Hauteur a maturite (cm):
+										</span>
+										{{ product.size }}
+									</li>
+									<li class="list-group-item bg-transparent">
+										<span class="fw-bold">Floraison parfumee:
+										</span>
+										{{ product.bloom }}
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						{# Количество на складе и выбранное количество #}
+						<div class="bg_color_11 card_shadow rounded-bottom">
+							<div class="p-3">
+								<ul class="list-group list-group-vertical rounded-0 h-100">
+									<li class="list-group-item px-0 border-1 d-flex flex-column flex-sm-row bg-transparent justify-content-evenly">
+										<p class="fw-bold">Prix, €:
+											{{ product.price }}</p>
+										{% if product.inStockQnty > 0 %}
+											<p class="fw-bold ms-sm-3">En stock:
+												{{ product.inStockQnty }}</p>
+										{% else %}
+											<p class="fw-bold ms-sm-3">Rupture de stock</p>
+										{% endif %}
+									</li>
+
+									<li
+										class="list-group-item px-0 border-1 px-5 bg-transparent">
+										{# Функция внесения/изменения записи в базу товаров пользователя #}
+										<form action="{{ path('app_product_addToCart', { 'catSlug': product.category.slug, 'prodSlug': product.slug }) }}" method="POST">
+											{{ include ('_partials/_addToCart_form.html.twig', { button_title: 'Ajouter au panier' } ) }}
+										</form>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

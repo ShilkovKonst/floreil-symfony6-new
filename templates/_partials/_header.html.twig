@@ -1,0 +1,117 @@
+<header
+	id="header" class="py-0">
+	{# hidden moto #}
+	<div class="container position-absolute opacity-0">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="text-center">Une décoration inspirée par la nature</h1>
+			</div>
+		</div>
+	</div>
+	{#  #}
+
+	<nav class="navbar navbar-expand-sm">
+		<div
+			class="container-fluid bgc">
+			{# Logo and link to main page #}
+			<a href="{{ path('app_main') }}" id="logo">
+				<img src="/images/logos/logo_floreil_main_75x240.png" alt="logo" class="img-fluid d-none d-sm-block"/>
+				<img src="/images/logos/logo_floreil_main_50x160.png" alt="logo" class="img-fluid d-block d-sm-none "/>
+			</a>
+
+			{# navbar collapse button #}
+			<button class="navbar-toggler hamburger hamburger--collapse rounded-circle ms-auto huge px-1" type="button" data-bs-toggle="collapse" data-bs-target="#headerSupportedContent" aria-controls="headerSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="collapse_toggler_header">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
+			{#  #}
+
+			{# section of the users profile and cart #}
+			<div class="collapse navbar-collapse gap-3" id="headerSupportedContent">
+				<ul class="navbar-nav mt-3 my-md-auto justify-content-md-end justify-content-evenly gap-3 gap-sm-4 list-group-verical ms-auto" id="list">
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						{# link to cart or dashboar if user is admin#}
+						{% if 'ROLE_ADMIN' in user.roles %}
+
+							<li class="nav-item">
+								<a href="{{ path('admin') }}" class="d-flex justify-content-center align-self-center btn btn-header flex-shrink-0 rounded-pill" aria-current="page">
+									<i class="fa-solid fa-list align-self-center navbar_text_shadow bi_big"></i>
+									<div class="p-1"></div>
+									<div class="fw-bold fs-5 align-self-center navbar_text_shadow">Dashboard</div>
+								</a>
+							</li>
+						{% else %}
+							<li class="nav-item">
+								<a href="{{ path('app_cart') }}" class="d-flex justify-content-center align-self-center btn btn-header flex-shrink-0 rounded-pill" aria-current="page">
+									<i class="fa-solid fa-cart-shopping  align-self-center navbar_text_shadow bi_big"></i>
+									<div class="p-1"></div>
+									<div class="fw-bold fs-5 align-self-center navbar_text_shadow">Panier</div>
+								</a>
+							</li>
+						{% endif %}
+						{# link to profile #}
+						<li class="nav-item">
+							<div class="dropdown">
+								<div class="d-flex justify-content-center align-self-center btn btn-header flex-shrink-0 rounded-pill dropdown-toggle triangle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+									{% if user.avatarImage %}
+										<div class="tiny">
+											<img src="{{ asset('images/profiles/' ~ user.avatarImage) }}" alt="{{ user.avatarImage }}" class="img-fluid rounded-circle">
+										</div>
+									{% else %}
+										<i class="fa-solid fa-user align-self-center navbar_text_shadow bi_big"></i>
+									{% endif %}
+									<div class="p-1"></div>
+									<div class="fw-bold fs-5 align-self-center navbar_text_shadow"></div>
+								</div>
+								<ul class="dropdown-menu dropdown-menu-end mt-2 mt-md-3" id="profile_dropdown">
+									<h6 class="dropdown-header text-center fw-bold">{{ user.name }}
+										{{ user.surname }}</h6>
+									<li><hr class="dropdown-divider"></li>
+									<li>
+										<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('app_profile') }}">
+											<i class="fa-solid fa-address-card"></i>
+											Profil</a>
+									</li>
+									<li><hr class="dropdown-divider"></li>
+									<li>
+										<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('app_profile_settings') }}">
+											<i class="fa-solid fa-gear"></i>
+											Paramètres</a>
+									</li>
+									<hr class="dropdown-divider">
+									<hr class="dropdown-divider">
+									<li>
+										<a class="dropdown-item d-flex justify-content-between align-items-center rounded-bottom-3" href="{{ path('app_logout') }}">
+											<i class="fa-solid fa-right-from-bracket"></i>
+											Sign out</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						{# link to logout #}
+					</li>
+				{% else %}
+					{# link to login #}
+					<li class="nav-item">
+						<a href="{{ path('app_login') }}" class="d-flex justify-content-center align-self-center btn btn-header flex-shrink-0 rounded-pill" aria-current="page">
+							<i class="fa-solid fa-right-to-bracket fa-rotate-180 align-self-center navbar_text_shadow bi_big"></i>
+							<div class="p-1"></div>
+							<div class="fw-bold fs-5 align-self-center navbar_text_shadow">Sign in</div>
+						</a>
+					</li>
+
+					{# link to register #}
+					<li class="nav-item">
+						<a href="{{ path('app_register') }}" class="d-flex justify-content-center align-self-center btn btn-header flex-shrink-0 rounded-pill" aria-current="page">
+							<i class="fa-solid fa-pen-to-square align-self-center navbar_text_shadow bi_big"></i>
+							<div class="p-1"></div>
+							<div class="fw-bold fs-5 align-self-center navbar_text_shadow">Sign up</div>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+		{#  #}
+	</div>
+</nav></header>

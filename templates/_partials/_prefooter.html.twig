@@ -1,0 +1,48 @@
+<section id="prefooter_section" class="sticky-bottom">
+	<div class="container-fluid">
+		<div class="row">
+			<div id="social" class="col-12 d-flex gap-1 gap-sm-3">
+				<div class="florei_brun_separator separator_adjustible grad-to-left h-75 align-self-center mx-auto mx-sm-0 ms-0 ms-sm-auto"></div>
+				{% for icon in [ 
+        {
+            "link": "https://www.facebook.com/",
+            "icon": "fa fa-brands fa-facebook-f"
+        },
+        {
+            "link": "https://www.instagram.com/",
+            "icon": "fa fa-brands fa-instagram"
+        },
+        {
+            "link": "https://vk.com/",
+            "icon": "fa fa-brands fa-vk"
+        },
+        {
+            "link": "https://twitter.com/",
+            "icon": "fa fa-brands fa-twitter"
+        },
+        {
+            "link": "https://web.telegram.org/",
+            "icon": "fa fa-brands fa-telegram"
+        },
+        {
+            "link": "https://www.youtube.com/",
+            "icon": "fa fa-brands fa-youtube"
+        }
+    ] %}
+					<a href="{{ icon.link }}" target="_blank" rel='noreferrer' class="social_links d-flex justify-content-center align-self-center rounded-circle mx-auto mx-sm-0">
+						<button class="social_buttons d-flex justify-content-center align-self-center btn btn-social-media rounded-circle flex-shrink-0 icon_resize" type="submit">
+							<i class="{{ icon.icon }} social_icons fa-lg align-self-center" aria-hidden="true"></i>
+						</button>
+					</a>
+				{% endfor %}
+				<div class="florei_brun_separator separator_adjustible grad-to-right h-75 align-self-center mx-auto mx-sm-0 me-0 me-sm-auto"></div>
+
+				<a href="#header" class="d-flex justify-content-center align-self-center rounded-circle">
+					<button class="d-flex justify-content-center align-self-center btn btn-additional rounded-circle flex-shrink-0 icon_resize" type="submit">
+						<i class="fa fa-angle-double-up fa-lg align-self-center" aria-hidden="true"></i>
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

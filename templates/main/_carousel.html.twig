@@ -1,0 +1,61 @@
+<section id="ads_carousel">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-center fw-bold">Section publicité</h2>
+				</div>
+			</div>
+
+			<div id="carouselExampleCaptions" class="carousel slide col-8 mx-auto" data-bs-ride="false">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+
+					{% for carItem in [
+        {
+            "id": 1,
+            "title": "Plantes d'intérieur",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "link": "interieur",
+            "image": "carousel-1-bruno-martins.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Plantes d'extérieur",
+            "description": "Tempore sint deleniti numquam aliquid officiis, officia voluptatem perferendis rerum quod.",
+            "link": "exterieur",
+            "image": "carousel-2-gabriella-clare-marino.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Conseils",
+            "description": "Reprehenderit eveniet iure ipsum autem esse accusamus vel excepturi quo eaque?",
+            "link": "conseils",
+            "image": "carousel-3-lindsey-lamont.jpg"
+        }
+    ] %}
+						<div class="carousel-item {% if carItem.id is same as(1) %} active {% else %} carousel-item {% endif %}">
+							<div>
+								<img src="{{ asset('images/carousel/' ~ carItem.image) }}" class="d-block w-100 img-fluid" alt={{ carItem.title }}/>
+								<div class="carousel-caption p-3 p-lg-5">
+									<h5>{{ carItem.title }}</h5>
+									<p class="d-none d-md-block">{{ carItem.description }}</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</section>

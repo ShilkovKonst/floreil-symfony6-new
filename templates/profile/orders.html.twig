@@ -1,0 +1,49 @@
+<div class="row">
+	<h3 class="col-12">Vos commandes</h3>
+	{% if user.orders|length is same as(0) %}
+		<div>Vous n'avez rien encore acheté.</div>
+	{% else %}
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					{% for order in orders %}
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="panelsStayOpen-heading{{ order.id }}">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ order.id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{ order.id }}">
+									<table class="table table-borderless">
+										<tbody class='d-flex flex-column flex-lg-row justify-content-center'>
+											<tr class=''>
+												<td class="fw-bold">Numero:</td>
+												<td class="fw-bold">{{ order.reference }}</td>
+											</tr>
+											{# <td class="fw-bold d-none d-md-block">|</td> #}
+											<tr class=''>
+												<td class="fw-bold">Produits:</td>
+												<td class="fw-bold">{{ order.orderDetails|length }}</td>
+											</tr>
+											{# <td class="fw-bold d-none d-md-block">|</td> #}
+											<tr class=''>
+												<td class="fw-bold">Somme, €:</td>
+												<td class="fw-bold">{{ order.price }}</td>
+											</tr>
+											{# <td class="fw-bold d-none d-md-block">|</td> #}
+											<tr class=''>
+												<td class="fw-bold">Date:</td>
+												<td class="fw-bold">{{ order.createdAt|date("j/M/Y") }}</td>
+											</tr>
+										</tbody>
+									</table>
+								</button>
+							</h2>
+							<div id="panelsStayOpen-collapse{{ order.id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ order.id }}">
+								<div class="accordion-body py-0">
+									{{ include ('profile/order.html.twig', { 'order': order }) }}
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</div>

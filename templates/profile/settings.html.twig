@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile settings
+	{{ user.email }}
+{% endblock %}
+{% block breadcrumb %}
+	<section id='breadcrumbs'>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_main') }}">Accueil</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_profile') }}">Profil</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Paramètres de profil</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<section id="login_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="fw-bold text-center">Paramètres
+					</h2>
+				</div>
+			</div>
+			{{ form_start(userAvatarForm, {'attr': {'class': 'row'}}) }}
+			<h3 class="col-12">Changer votre image de profil</h3>
+			{{ form_label(userAvatarForm.profileImage, 'Choisir une image', { 'label_attr': { 'class': 'btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 bodybtn_text_shadow' } }) }}
+			{{ form_widget(userAvatarForm.profileImage, { 'attr': { 'class': 'd-none' } }) }}
+			{{ form_errors(userAvatarForm.profileImage) }}
+			<button type="submit" class="btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 bodybtn_text_shadow">Sauvegarder</button>
+			{{ form_end(userAvatarForm) }}
+			<div class="border border-bottom my-3 border-success"></div>
+			{{ form_start(userInfoForm, {'attr': {'class': 'row'}}) }}
+			<h3 class="col-12 mt-2">Changer votre adresse</h3>
+			<div class="col-12 col-md-6 col-lg-4">
+				{{ form_label(userInfoForm.mobTel, 'Téléphone portable', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.mobTel, {'attr': {'class': 'form-control rounded-pill', 'value': user.mobTel }}) }}
+			</div>
+			<div class="col-12 col-md-6 col-lg-2">
+				{{ form_label(userInfoForm.codeZIP, 'Code postale', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.codeZIP, {'attr': {'class': 'form-control rounded-pill', 'value': user.codeZIP }}) }}
+			</div>
+			<div class="col-12 col-md-4 col-lg-4">
+				{{ form_label(userInfoForm.city, 'Ville', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.city, {'attr': {'class': 'form-control rounded-pill', 'value': user.city }}) }}
+			</div>
+			<div class="col-12 col-md-4 col-lg-4">
+				{{ form_label(userInfoForm.street, 'Rue', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.street, {'attr': {'class': 'form-control rounded-pill', 'value': user.street }}) }}
+			</div>
+			<div class="col-12 col-md-4 col-lg-2">
+				{{ form_label(userInfoForm.buildNum, 'Bat. №', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.buildNum, {'attr': {'class': 'form-control rounded-pill', 'value': user.buildNum, 'placeholder': '(optional)' }}) }}
+			</div>
+			<div class="border border-bottom my-3 border-success"></div>
+			<div class="col-12">
+				{{ form_label(userInfoForm.additionalInfo, 'Informations complémentaires (facultatif, si vous souhaitez préciser l\'interphone, les heures de livraison, etc.)', {'label_attr': {'class': 'col-form-label'}}) }}
+				{{ form_widget(userInfoForm.additionalInfo, {'attr': {'class': 'form-control rounded-pill', 'value': user.additionalInfo }}) }}
+			</div>
+			<button type="submit" class="btn btn-body fw-bold text-shadow rounded-pill w-100 mt-3 bodybtn_text_shadow">Confirmer</button>
+			{{ form_end(userInfoForm) }}
+
+		</div>
+	</section>
+{% endblock %}
