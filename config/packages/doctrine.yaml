@@ -1,14 +1,16 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        driver: 'pdo_mysql'
-        server_version: '5.7'
-        charset: utf8mb4
-        default_table_options:
-            charset: utf8mb4
-            collate: utf8mb4_unicode_ci
-        options:
-            unix_socket: '/cloudsql/solid-pact-378714:europe-west9:konstshilkov57'
+        # for google cloud sql############################################################
+        # driver: 'pdo_mysql'                                                           ##
+        # server_version: '5.7'                                                         ##
+        # charset: utf8mb4                                                              ##
+        # default_table_options:                                                        ##
+        #     charset: utf8mb4                                                          ##
+        #     collate: utf8mb4_unicode_ci                                               ##
+        # options:                                                                      ##
+        #     unix_socket: '/cloudsql/solid-pact-378714:europe-west9:konstshilkov57'    ##
+
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '15'
