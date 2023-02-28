@@ -6,15 +6,26 @@ use App\Entity\Category;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+use function PHPUnit\Framework\throwException;
 
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
         // return parent::index();
@@ -45,7 +56,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
-        yield MenuItem::linkToRoute('Florei', 'fas fa-home', 'app_main');
+        yield MenuItem::linkToUrl('Florei', 'fas fa-home', $this->generateUrl('app_main'));
 
         yield MenuItem::section('Shop');
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
@@ -54,5 +65,29 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
         yield MenuItem::linkToCrud('Orders', 'fas fa-list', Order::class);
+    }
+
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        if (!$user instanceof User) {
+            throw new Exception('Wrong user');
+        }
+        return parent::configureUserMenu($user)
+            ->setAvatarUrl('images/profiles/' . $user->getAvatarImage())
+            ->addMenuItems([
+                MenuItem::linkToUrl('Profile', 'fa fa-address-card', $this->generateUrl('app_profile'))
+            ]);
+    }
+
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+            ->addWebpackEncoreEntry('admin');
+    }
+
+    public function configureActions(): Actions
+    {
+        return parent::configureActions()
+            ->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 }
