@@ -77,7 +77,6 @@ class ProductController extends AbstractController
         $user = $this->getUser();
         /** @var Category $category */
         $category = $categories->findOneBySlug($catSlug);
-        $catProducts = $products->findByCategory($category->getId());
         $product = $products->findOneBySlug($prodSlug);
 
         $qntyToCart = $request->request->get('cart_qnty');
