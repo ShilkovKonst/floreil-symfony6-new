@@ -21,45 +21,45 @@
 				<h3 class="col-12">Information principale</h3>
 				<div class="col-12 col-md-6">
 					{{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control rounded-pill', 'required': 'true'}}) }}
 				</div>
 				<div class="col-12 col-md-6">
 					{{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control rounded-pill', 'required': 'true'}}) }}
 				</div>
 				<div class="col-8 form-check ms-3">
 					{{ form_label(registrationForm.agreeTerms, 'Accepter les termes ', {'label_attr': {'class': 'form-check-label'}}) }}
-					{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input rounded-1'}}) }}
+					{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input rounded-1', 'required': 'true'}}) }}
 				</div>
 				<div class="border border-bottom my-3 border-success"></div>
 				<h3 class="col-12">Coordonnées</h3>
 				<div class="col-12 col-md-6 col-lg-4">
 					{{ form_label(registrationForm.surname, 'Nom', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.surname, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.surname, {'attr': {'class': 'form-control rounded-pill', 'required': 'true'}}) }}
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
 					{{ form_label(registrationForm.name, 'Prenom', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.name, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.name, {'attr': {'class': 'form-control rounded-pill', 'required': 'true'}}) }}
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
 					{{ form_label(registrationForm.mobTel, 'Téléphone portable', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.mobTel, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.mobTel, {'attr': {'class': 'form-control rounded-pill', 'required': 'true'}}) }}
 				</div>
 				<div class="col-12 col-md-6 col-lg-2">
 					{{ form_label(registrationForm.codeZIP, 'Code postale', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.codeZIP, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.codeZIP, {'attr': {'class': 'form-control rounded-pill', 'required': 'true', 'minlength': 5}}) }}
 				</div>
 				<div class="col-12 col-md-4 col-lg-4">
 					{{ form_label(registrationForm.city, 'Ville', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.city, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.city, {'attr': {'class': 'form-control rounded-pill', 'required': 'true', 'readonly': 'true', 'placeholder': 'Saisissez code postal valide'}}) }}
 				</div>
 				<div class="col-12 col-md-4 col-lg-4">
 					{{ form_label(registrationForm.street, 'Rue', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.street, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.street, {'attr': {'class': 'form-control rounded-pill', 'required': 'true',}}) }}
 				</div>
 				<div class="col-12 col-md-4 col-lg-2">
 					{{ form_label(registrationForm.buildNum, 'Bat. №', {'label_attr': {'class': 'col-form-label'}}) }}
-					{{ form_widget(registrationForm.buildNum, {'attr': {'class': 'form-control rounded-pill'}}) }}
+					{{ form_widget(registrationForm.buildNum, {'attr': {'class': 'form-control rounded-pill', 'required': 'true',}}) }}
 				</div>
 				<div class="border border-bottom my-3 border-success"></div>
 				<div class="col-12">

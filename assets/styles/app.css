@@ -2,7 +2,7 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 /* @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css"; */
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap');
 @import "/assets/styles/range-materialize.css";
 @import "/assets/styles/hamburger.css";
 
@@ -18,7 +18,7 @@
   --main_bg_color_22: rgba(204, 154, 41, 0.5);
   --main_bg_color_222: rgba(204, 154, 41, 0.66);
   --main_bg_color_2222: rgba(204, 154, 41, 0.99);
-  --floreil-font-family: Georgia, 'Times New Roman', Times, serif;
+  --floreil-font-family: 'Roboto', sans-serif;
   --bs-border-color: black;
 }
 

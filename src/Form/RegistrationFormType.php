@@ -48,8 +48,26 @@ class RegistrationFormType extends AbstractType
             ->add('surname', TextType::class)
             ->add('name', TextType::class)
             ->add('mobTel', TextType::class)
-            ->add('codeZIP', TextType::class)
-            ->add('city', TextType::class)
+            ->add('codeZIP', TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a ZIP code',
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'ZIP code should be 5 characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 5,
+                    ]),
+                ],
+            ])
+            ->add('city', TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'City name should be ',
+                    ])
+                ],
+            ])
             ->add('street', TextType::class)
             ->add('buildNum', TextType::class)
             ->add(

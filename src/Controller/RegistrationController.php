@@ -18,7 +18,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
-{    
+{
     #[Route('/register', name: 'app_register', priority: 2)]
     public function register(
         Request $request,
@@ -79,6 +79,12 @@ class RegistrationController extends AbstractController
             );
 
             //return $this->redirectToRoute('app_main');
+        } else if ($form->isSubmitted() && !$form->isValid()) {
+            $errors = $form->getErrors(true);
+            foreach ($errors as $error) {
+                $errorMessages[] = $error->getMessage();
+            }
+            $this->addFlash('danger', implode('<br>', $errorMessages));
         }
 
         return $this->render('registration/register.html.twig', [
