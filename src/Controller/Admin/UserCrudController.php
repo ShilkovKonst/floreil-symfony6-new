@@ -32,6 +32,7 @@ class UserCrudController extends AbstractCrudController
         yield IdField::new('id')
             ->hideOnForm();
         yield EmailField::new('email');
+        yield TextField::new('password')->onlyOnForms();
         yield BooleanField::new('isVerified')
             ->renderAsSwitch(false);
         $roles = ['ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER'];

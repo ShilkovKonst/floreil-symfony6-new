@@ -1,2 +1,45 @@
 {# {% extends "base.html.twig" %} #}
 {% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block content_title %}
+	<h1 class='text-center'>Dashboard</h1>
+{% endblock %}
+
+{% block page_content %}
+	<div class='container'>
+		<div class='row justify-content-evenly'>
+			<div class='col-12 col-md-6 col-lg-3 p-3'>
+				<div class='bg-success bg-opacity-75 p-0 m-0'>
+					<a href='?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CUserCrudController' class='text-center align-items-center text-decoration-none text-reset'>
+						<p class='h3'>Utilisateurs</p>
+						<p class='display-3 fw-bold'>{{ countUsers['value'] }}</p>
+					</a>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3 p-3'>
+				<div class='bg-danger bg-opacity-75 p-0 m-0'>
+					<a href='?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5COrderCrudController' class='text-center align-items-center text-decoration-none text-reset'>
+						<p class='h3'>Commandes</p>
+						<p class='display-3 fw-bold'>{{ countOrders['value'] }}</p>
+					</a>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3 p-3'>
+				<div class='bg-warning bg-opacity-75 p-0 m-0'>
+					<a href='?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CCategoryCrudController' class='text-center align-items-center text-decoration-none text-reset'>
+						<p class='h3'>Categories</p>
+						<p class='display-3 fw-bold'>{{ countCategories['value'] }}</p>
+					</a>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3 p-3'>
+				<div class='bg-info bg-opacity-75 p-0 m-0'>
+					<a href='?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CProductCrudController' class='text-center align-items-center text-decoration-none text-reset'>
+						<p class='h3'>Produits</p>
+						<p class='display-3 fw-bold'>{{ countProducts['value'] }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

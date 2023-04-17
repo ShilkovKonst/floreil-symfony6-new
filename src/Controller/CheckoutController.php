@@ -21,14 +21,13 @@ class CheckoutController extends AbstractController
         $user = $this->getUser();
         $userCartProducts = $carts->findByUser($user);
         $stripePublicKey = $this->getParameter('stripe_public_key');
+        $currency = 'eur';
 
         $invalidQnty = false;
         foreach ($userCartProducts as $prod) {
             $ids[] = $prod->getProducts()->getId();
         }
         $chosenProducts = $products->findById($ids);
-
-        $currency = 'eur';
 
         for ($i = 0; $i < count($userCartProducts); $i++) {
             $errors = $validator->validate($chosenProducts[$i]);
@@ -45,10 +44,8 @@ class CheckoutController extends AbstractController
                 'amount' => $amount * 100,
             ]);
         } else {
-
             if ($request->isMethod('POST')) {
                 $token = $request->get('stripeToken');
-
                 $stripe = new StripeClient($this->getParameter('stripe_api_key'));
                 $stripe->charges->create([
                     'amount' => $amount * 100,

@@ -24,7 +24,9 @@ hamburger.addEventListener("click", function () {
 
 const zipInput = document.getElementById("registration_form_codeZIP");
 const cityInput = document.getElementById("registration_form_city");
+const flashMessage = document.getElementById('errorZIP')
 zipInput.addEventListener("input", async () => {
+  flashMessage.classList.add('d-none')
   if (zipInput.value.length === 5) {
     try {
       const response = await fetch(
@@ -39,6 +41,7 @@ zipInput.addEventListener("input", async () => {
         // console.log(cityInput.value)
       } else {
         cityInput.value = "";
+        flashMessage.classList.remove('d-none')
       }
     } catch (error) {
       console.error(

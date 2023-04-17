@@ -48,6 +48,7 @@
 				<div class="col-12 col-md-6 col-lg-2">
 					{{ form_label(registrationForm.codeZIP, 'Code postale', {'label_attr': {'class': 'col-form-label'}}) }}
 					{{ form_widget(registrationForm.codeZIP, {'attr': {'class': 'form-control rounded-pill', 'required': 'true', 'minlength': 5}}) }}
+					<p id='errorZIP' class='d-none text-danger'>Votre code postale est incorrect!</p>
 				</div>
 				<div class="col-12 col-md-4 col-lg-4">
 					{{ form_label(registrationForm.city, 'Ville', {'label_attr': {'class': 'col-form-label'}}) }}
