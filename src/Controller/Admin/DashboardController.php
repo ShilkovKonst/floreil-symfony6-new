@@ -78,17 +78,17 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Orders', 'fas fa-list', Order::class);
     }
 
-    public function configureUserMenu(UserInterface $user): UserMenu
-    {
-        if (!$user instanceof User) {
-            throw new Exception('Wrong user');
-        }
-        return parent::configureUserMenu($user)
-            ->setAvatarUrl('images/profiles/' . $user->getAvatarImage())
-            ->addMenuItems([
-                MenuItem::linkToUrl('Profile', 'fa fa-address-card', $this->generateUrl('app_profile'))
-            ]);
-    }
+    // public function configureUserMenu(UserInterface $user): UserMenu
+    // {
+    //     if (!$user instanceof User) {
+    //         throw new Exception('Wrong user');
+    //     }
+    //     return parent::configureUserMenu($user)
+    //         ->setAvatarUrl('images/profiles/' . $user->getAvatarImage())
+    //         ->addMenuItems([
+    //             MenuItem::linkToUrl('Profile', 'fa fa-address-card', $this->generateUrl('app_profile'))
+    //         ]);
+    // }
 
     public function configureAssets(): Assets
     {

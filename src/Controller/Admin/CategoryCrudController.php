@@ -3,12 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use App\Service\FileToStringTransformerService;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CategoryCrudController extends AbstractCrudController
 {
@@ -23,14 +21,9 @@ class CategoryCrudController extends AbstractCrudController
         
             yield TextField::new('name');
             yield TextEditorField::new('description');
-            yield Field::new('image')
-            ->setFormType(FileType::class)
-            ->setFormTypeOptions([
-                'required' => false,
-                'attr' => ['accept' => 'image/*'],
-                'data_class' => null
-            ])
-            ->onlyOnForms();
-    }
-    
+            yield ImageField::new('image')
+            ->setBasePath("images/categories")
+            ->setUploadDir("public/images/categories")
+            ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]');
+    }    
 }
