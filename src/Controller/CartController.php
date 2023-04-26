@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CartController extends AbstractController
 {
     #[Route('/cart', name: 'app_cart', priority:2)]
-    public function index(ProductRepository $products, CartRepository $carts): Response
+    public function index(CartRepository $carts): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -30,15 +30,8 @@ class CartController extends AbstractController
         $stripePublicKey = $this->getParameter('stripe_public_key');
 
         if ($userCartProducts != null) {
-            /** @var Cart $prod */
-            foreach ($userCartProducts as $prod) {
-                $ids[] = $prod->getProducts()->getId();
-            }
-            $chosenProducts = $products->findById($ids);
-
             return $this->render('cart/index.html.twig', [
                 'user' => $user,
-                'chosenProducts' => $chosenProducts,
                 'userCartProducts' => $userCartProducts,
                 'stripe_public_key' => $stripePublicKey,
             ]);
@@ -56,6 +49,7 @@ class CartController extends AbstractController
         $user = $this->getUser();
         /** @var Product $product */
         $product = $products->findOneById($id);
+        // dd($product);
         $cartProdToChangeQnty = $carts->findOneByUserAndProduct($user, $product);
         $qntyToChange = $request->request->get('cart_qnty');
         $cartProdToChangeQnty->setQnty($qntyToChange);

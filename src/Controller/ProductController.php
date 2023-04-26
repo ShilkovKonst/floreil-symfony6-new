@@ -36,12 +36,14 @@ class ProductController extends AbstractController
     }    
 
     #[Route('/{catSlug}/{prodSlug}', name: 'app_product_show_one', priority: 0)]
-    public function showOneProduct($catSlug, $prodSlug, ProductRepository $products): Response
+    public function showOneProduct($catSlug, $prodSlug, ProductRepository $products, CategoryRepository $categories): Response
     {
         /** @var User $user */
         $user = $this->getUser();
+        /** @var Category $category */
+        $category = $categories->findOneBySlug($catSlug);
         /** @var Product $product */
-        $product = $products->findOneBySlug($prodSlug);
+        $product = $products->findOneBy(['slug' => $prodSlug, 'category' => $category]);
 
         return $this->render(
             'product/show_one.html.twig',
@@ -77,7 +79,7 @@ class ProductController extends AbstractController
         $user = $this->getUser();
         /** @var Category $category */
         $category = $categories->findOneBySlug($catSlug);
-        $product = $products->findOneBySlug($prodSlug);
+        $product = $products->findOneBy(['slug' => $prodSlug, 'category' => $category]);
 
         $qntyToCart = $request->request->get('cart_qnty');
 
